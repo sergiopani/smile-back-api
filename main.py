@@ -16,7 +16,7 @@ async def root():
 
 
 @app.get("/users")
-async def users():
+async def get_users():
     return JSONResponse(content=users)
 
 
