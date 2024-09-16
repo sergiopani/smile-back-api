@@ -1,52 +1,45 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
-users = [
-    {
-        "id": 1,
-        "name": "smile",
-        "pass": "1234",
-        "email": "xpanisergio@gmail.com"
-    }
-]
-
-
-users_from_web = [
-    {
-        "id": 1,
-        "name": "Sergio",
-        "pass": "1234"
-    },
-    {
-        "id": 1,
-        "name": "Jordi",
-        "pass": "1234"
-    },
-    {
-        "id": 1,
-        "name": "Anonimo",
-        "pass": "1234"
-    },
-    {
-        "id": 1,
-        "name": "Anonimo",
-        "pass": "1234"
-    }
-]
-
 
 class LoginRequest(BaseModel):
     email: str
     password: str
 
+users = [
+    {
+        "id": 1,
+        "email": "anonimo@example.com",
+        "pass": "1234"
+    },
+    {
+        "id": 2,
+        "email": "usuario2@example.com",
+        "pass": "abcd"
+    }
+]
 
 app = FastAPI()
+
+# Configuración de CORS
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "http://yourdomain.com"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-
 
 @app.post("/login")
 async def login(login_request: LoginRequest):
