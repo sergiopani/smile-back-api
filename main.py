@@ -9,7 +9,7 @@ users = [
         "id": 1,
         "name": "smile",
         "pass": "1234",
-        "email": "xpanisergio@gmail.com"
+        "email": "Info.smile.publicidad@gmail.com"
     }
 ]
 
@@ -69,7 +69,10 @@ async def root():
 @app.post("/login")
 async def login(login_request: LoginRequest):
     for user in users:
-        if user["email"] == login_request.email and user["pass"] == login_request.password:
+        #lowe case
+        email = user["email"].lower()
+        login_request_email = login_request.email.lower()
+        if email == login_request_email and user["pass"] == login_request.password:
             return JSONResponse(content={"message": "Login successful", "user_id": user["id"]})
     raise HTTPException(status_code=401, detail="Invalid credentials")
 
