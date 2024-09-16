@@ -47,7 +47,7 @@ app = FastAPI()
 
 # Configuración de CORS
 origins = [
-    "http://localhost",
+    "http://localhost:5173",
     "http://localhost:8000",
     "https://smile-admin-front-react.vercel.app"
 ]
