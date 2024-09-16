@@ -49,7 +49,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:8000",
-    "http://yourdomain.com"
+    "https://smile-admin-front-react.vercel.app"
 ]
 
 app.add_middleware(
