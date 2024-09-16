@@ -73,6 +73,6 @@ async def login(login_request: LoginRequest):
             return JSONResponse(content={"message": "Login successful", "user_id": user["id"]})
     raise HTTPException(status_code=401, detail="Invalid credentials")
 
-@app.post("/get_users_from_web")
+@app.get("/get_users_from_web")
 async def get_users_from_web():
     return JSONResponse(content={"users": users_from_web})
