@@ -6,7 +6,7 @@ users = [
     {
         "id": 1,
         "name": "smile",
-        "pass": "1234"
+        "pass": "1234",
         "email": "xpanisergio@gmail.com"
     }
 ]
